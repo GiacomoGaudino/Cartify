@@ -36,9 +36,10 @@ class CheckoutController extends Controller
 
             $order = Order::create([
                 'customer_name' => $validated['name'],
-                'email' => $validated['email'],
-                'address' => $validated['address'],
-                'total_price' => $total,
+                'customer_email' => $validated['email'],
+                'shipping_address' => $validated['address'],
+                'total' => $total,
+                'status' => 'pending',
             ]);
 
             foreach ($cart as $id => $item) {
