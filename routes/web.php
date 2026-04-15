@@ -39,8 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('admin/products', AdminProductController::class);
-});
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::resource('products', AdminProductController::class);
+    });
 
 require __DIR__ . '/auth.php';

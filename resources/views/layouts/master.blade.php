@@ -62,6 +62,12 @@
                 <div class="flex items-center gap-3 text-sm font-medium">
 
                     @auth
+                        @if(auth()->user()->is_admin)
+                            <a href="{{ route('admin.products.index') }}"
+                                class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
+                                Admin
+                            </a>
+                        @endif
                         <a href="{{ route('orders.index') }}"
                             class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
                             I miei ordini
