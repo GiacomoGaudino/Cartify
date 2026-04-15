@@ -29,7 +29,7 @@ class CheckoutController extends Controller
                 ->with('error', 'Il carrello è vuoto.');
         }
 
-        DB::transaction(function () use ($validated, $cart) {
+        $order = DB::transaction(function () use ($validated, $cart) {
             $total = collect($cart)->sum(function ($item) {
                 return $item['price'] * $item['quantity'];
             });
@@ -51,11 +51,13 @@ class CheckoutController extends Controller
                     'subtotal' => $item['price'] * $item['quantity'],
                 ]);
             }
+
+            return $order;
         });
 
         session()->forget('cart');
 
-        return redirect('/')->with('success', 'Ordine completato!');
+        return redirect()->route('checkout.success', $order->id);
     }
 
     public function success(Order $order)
