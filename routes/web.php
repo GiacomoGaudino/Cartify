@@ -18,3 +18,5 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove']);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
+Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])
+    ->name('checkout.success');

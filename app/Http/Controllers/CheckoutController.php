@@ -57,4 +57,11 @@ class CheckoutController extends Controller
 
         return redirect('/')->with('success', 'Ordine completato!');
     }
+
+    public function success(Order $order)
+    {
+        $order->load('items.product');
+
+        return view('checkout.success', compact('order'));
+    }
 }
