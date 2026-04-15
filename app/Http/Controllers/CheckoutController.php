@@ -35,6 +35,7 @@ class CheckoutController extends Controller
             });
 
             $order = Order::create([
+                'user_id' => auth()->id(),
                 'customer_name' => $validated['name'],
                 'customer_email' => $validated['email'],
                 'shipping_address' => $validated['address'],
