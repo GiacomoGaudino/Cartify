@@ -54,26 +54,36 @@
                         required>
                 </div>
 
-                <!-- IMAGE UPLOAD -->
-                <div x-data="{ imagePreview: '{{ $product->image_url }}' }">
+                <!-- IMAGE -->
+                <div x-data="{ imagePreview: null }">
 
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Immagine prodotto
                     </label>
 
+                    <!-- IMMAGINE ATTUALE -->
+                    @if($product->image_url)
+                        <div x-show="!imagePreview" class="mb-4">
+                            <p class="text-sm text-gray-500 mb-2">
+                                Immagine attuale
+                            </p>
+                            <img src="{{ $product->image_url }}"
+                                class="w-full h-48 object-cover rounded-2xl border border-gray-200">
+                        </div>
+                    @endif
+
+                    <!-- BOX UPLOAD -->
                     <label
                         class="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:border-blue-500 transition overflow-hidden">
 
-                        <!-- EMPTY -->
                         <template x-if="!imagePreview">
-                            <div class="text-center">
+                            <div class="text-center px-4">
                                 <p class="text-sm text-gray-500">
-                                    Clicca per caricare un'immagine
+                                    Carica una nuova immagine
                                 </p>
                             </div>
                         </template>
 
-                        <!-- PREVIEW -->
                         <template x-if="imagePreview">
                             <img :src="imagePreview" class="w-full h-full object-cover">
                         </template>

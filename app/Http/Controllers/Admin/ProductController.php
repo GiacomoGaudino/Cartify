@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,13 +26,21 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'price' => ['required', 'numeric', 'min:0'],
+            'price' => ['required', 'numeric'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
+
+        if ($request->hasFile('image')) {
+
+            $path = $request->file('image')->store('products', 'public');
+
+            $validated['image'] = $path;
+        }
 
         Product::create($validated);
 
-        return redirect()->route('products.index')
-            ->with('success', 'Prodotto creato con successo');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Prodotto creato');
     }
 
     public function edit(Product $product)
@@ -44,12 +53,26 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'price' => ['required', 'numeric', 'min:0'],
+            'price' => ['required', 'numeric'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
+
+        if ($request->hasFile('image')) {
+
+            // 🔴 elimina immagine vecchia
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            // 🔴 salva nuova
+            $path = $request->file('image')->store('products', 'public');
+
+            $validated['image'] = $path;
+        }
 
         $product->update($validated);
 
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
             ->with('success', 'Prodotto aggiornato');
     }
 

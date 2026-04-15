@@ -30,10 +30,6 @@
                     <input type="text" name="name" value="{{ old('name') }}"
                         class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:ring-2 focus:ring-blue-500"
                         required>
-
-                    @error('name')
-                        <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <!-- DESCRIPTION -->
@@ -57,7 +53,7 @@
                         required>
                 </div>
 
-                <!-- IMAGE UPLOAD -->
+                <!-- IMAGE -->
                 <div x-data="{ imagePreview: null }">
 
                     <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -88,9 +84,6 @@
                             @change="imagePreview = URL.createObjectURL($event.target.files[0])">
                     </label>
 
-                    @error('image')
-                        <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <!-- ACTIONS -->
