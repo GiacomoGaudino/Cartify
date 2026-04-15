@@ -93,17 +93,19 @@
     </header>
 
     <!-- HERO -->
-    <section class="bg-blue-600 text-white">
-        <div class="max-w-6xl mx-auto px-4 py-12">
-            <h1 class="text-4xl font-bold">
-                Benvenuto su Cartify 🚀
-            </h1>
+    @if (!View::hasSection('hideHero'))
+        <section class="bg-blue-600 text-white">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <h1 class="text-4xl font-bold">
+                    Benvenuto su Cartify 🚀
+                </h1>
 
-            <p class="mt-2 text-blue-100">
-                Il tuo e-commerce Laravel moderno e minimal.
-            </p>
-        </div>
-    </section>
+                <p class="mt-2 text-blue-100">
+                    Il tuo e-commerce Laravel moderno e minimal.
+                </p>
+            </div>
+        </section>
+    @endif
 
     <!-- FLASH MESSAGES -->
     <main class="max-w-6xl mx-auto px-4 py-10">
