@@ -47,7 +47,8 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $id,
                     'quantity' => $item['quantity'],
-                    'price' => $item['price'],
+                    'unit_price' => $item['price'],
+                    'subtotal' => $item['price'] * $item['quantity'],
                 ]);
             }
         });
