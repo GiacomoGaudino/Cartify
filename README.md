@@ -1,8 +1,10 @@
 # Cartify
 
-Cartify is a Laravel-based e-commerce web application currently in development.
+Cartify is a Laravel-based e-commerce web application.
 
-## Features (in progress)
+## Overview
+
+This project includes the core features of a modern e-commerce system:
 
 - Product catalog
 - Product detail page
@@ -10,16 +12,29 @@ Cartify is a Laravel-based e-commerce web application currently in development.
 - Checkout flow
 - Order creation with order items
 
+The goal of this project is to build a complete and functional shopping experience, focusing on backend logic and clean structure.
+
 ## Tech Stack
 
-- Laravel
+- Laravel (PHP)
 - Blade
 - Tailwind CSS
 - MySQL
 
+## Current Features
+
+- Browse products
+- View product details
+- Add/remove items from cart
+- Update cart quantities
+- Complete checkout
+- Orders stored in database with order items
+
 ## Status
 
-This project is actively being developed and will include additional features such as:
+This project is currently in development.
+
+Next steps include:
 
 - Order history
 - Admin panel
