@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('hideHero', true)
+
 @section('content')
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
