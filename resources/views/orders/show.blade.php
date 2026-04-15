@@ -14,7 +14,7 @@
                 </p>
             </div>
 
-            <a href="{{ route('orders.index') }}" class="text-blue-600 font-medium hover:text-blue-700 transition">
+            <a href="{{ route('orders.index') }}" class="text-primary font-medium hover:text-primary-hover transition">
                 ← Torna ai miei ordini
             </a>
         </div>

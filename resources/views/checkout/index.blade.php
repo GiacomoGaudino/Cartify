@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('hideHero', true)
+
 @section('content')
 
     <h1 class="text-3xl font-bold mb-8">Checkout 🧾</h1>

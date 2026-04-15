@@ -22,7 +22,7 @@
             </p>
 
             <a href="{{ route('products.index') }}"
-               class="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-2xl hover:bg-blue-700 transition">
+               class="inline-block mt-4 bg-primary text-white px-6 py-3 rounded-2xl hover:bg-primary-hover transition">
                 Scopri i prodotti
             </a>
         </div>
@@ -119,7 +119,7 @@
             </div>
 
             <a href="{{ route('checkout.index') }}"
-               class="bg-blue-600 text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition font-medium">
+               class="bg-primary text-white px-8 py-3 rounded-2xl hover:bg-primary-hover transition font-medium">
                 Vai al checkout
             </a>
 

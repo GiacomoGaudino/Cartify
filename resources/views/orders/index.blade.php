@@ -16,7 +16,7 @@
                 <p class="text-gray-500 mt-2">Non hai ancora effettuato ordini.</p>
 
                 <a href="{{ route('products.index') }}"
-                    class="inline-block mt-6 bg-blue-600 text-white px-6 py-3 rounded-2xl hover:bg-blue-700 transition">
+                    class="inline-block mt-6 bg-primary text-white px-6 py-3 rounded-2xl hover:bg-primary-hover transition">
                     Scopri i prodotti
                 </a>
             </div>
@@ -40,7 +40,7 @@
                             </span>
 
                             <a href="{{ route('orders.show', $order) }}"
-                                class="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-700 transition text-sm font-medium">
+                                class="bg-primary text-white px-4 py-2 rounded-2xl hover:bg-primary-hover transition text-sm font-medium">
                                 Dettagli
                             </a>
                         </div>

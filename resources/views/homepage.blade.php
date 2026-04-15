@@ -9,7 +9,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                 <div>
-                    <span class="inline-block bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
+                    <span class="inline-block bg-blue-100 text-primary text-sm font-semibold px-4 py-2 rounded-full">
                         Welcome to Cartify
                     </span>
 
@@ -24,20 +24,22 @@
 
                     <div class="mt-8 flex flex-wrap gap-4">
                         <a href="{{ route('products.index') }}"
-                            class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-medium hover:bg-blue-700 transition">
+                            class="bg-primary text-white px-6 py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
                             Shop now
                         </a>
 
                         <a href="#about"
-                            class="bg-gray-100 text-gray-700 px-6 py-3 rounded-2xl font-medium hover:bg-gray-200 transition">
+                            class="bg-gray-100 text-gray-700 px-6 py-3 rounded-2xl font-medium hover:bg-blue-100 transition">
                             Learn more
                         </a>
                     </div>
                 </div>
 
-                <div
-                    class="h-72 md:h-96 bg-gray-100 rounded-3xl flex items-center justify-center text-gray-300 text-lg font-medium">
-                    Hero Image
+                <div class="h-72 md:h-96 rounded-3xl overflow-hidden group">
+
+                    <img src="{{ asset('imgs/hero.png') }}" alt="Hero Image"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+
                 </div>
 
             </div>
@@ -73,7 +75,8 @@
 
                 <div
                     class="h-72 bg-gray-100 rounded-3xl flex items-center justify-center text-gray-300 text-lg font-medium">
-                    Featured Section Image
+                    <img src="{{ asset('imgs/featured.png') }}" alt="Feature Image"
+                        class="h-full w-full object-cover rounded-3xl">
                 </div>
 
                 <div>
@@ -92,15 +95,15 @@
 
                     <ul class="mt-6 space-y-3 text-gray-600">
                         <li class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+                            <span class="w-2.5 h-2.5 bg-primary rounded-full"></span>
                             Responsive and user-friendly layout
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+                            <span class="w-2.5 h-2.5 bg-primary rounded-full"></span>
                             Product pages with clear structure
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+                            <span class="w-2.5 h-2.5 bg-primary rounded-full"></span>
                             Cart and checkout flow designed for simplicity
                         </li>
                     </ul>
@@ -110,24 +113,28 @@
         </section>
 
         <!-- CTA -->
-        <section class="bg-blue-600 rounded-3xl shadow p-8 md:p-12 text-white">
+        <section class="bg-primary text-white rounded-3xl shadow p-8 md:p-12">
+
             <div class="max-w-2xl">
+
                 <h2 class="text-3xl md:text-4xl font-bold leading-tight">
                     Start exploring Cartify today
                 </h2>
 
-                <p class="text-blue-100 text-lg mt-4 leading-relaxed">
+                <p class="text-primary-light text-lg mt-4 leading-relaxed">
                     Browse the catalog, discover the product pages, and experience the full shopping flow from cart to
                     checkout.
                 </p>
 
                 <div class="mt-8">
                     <a href="{{ route('products.index') }}"
-                        class="inline-block bg-white text-blue-600 px-6 py-3 rounded-2xl font-medium hover:bg-blue-50 transition">
+                        class="inline-block bg-white text-primary px-6 py-3 rounded-2xl font-medium hover:bg-blue-100 transition">
                         Explore products
                     </a>
                 </div>
+
             </div>
+
         </section>
 
     </div>

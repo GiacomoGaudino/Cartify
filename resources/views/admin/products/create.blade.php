@@ -93,7 +93,8 @@
                         ← Torna indietro
                     </a>
 
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-2xl hover:bg-blue-700 transition">
+                    <button type="submit"
+                        class="bg-primary text-white px-6 py-3 rounded-2xl hover:bg-primary-hover transition">
                         Crea prodotto
                     </button>
 

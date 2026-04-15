@@ -26,7 +26,7 @@
                 {{ $product->description }}
             </p>
 
-            <p class="text-3xl font-bold text-blue-600 mt-6">
+            <p class="text-3xl font-bold text-primary mt-6">
                 € {{ number_format($product->price, 2) }}
             </p>
 
@@ -35,13 +35,13 @@
                 @csrf
 
                 <button type="submit"
-                    class="mt-6 w-full md:w-auto bg-blue-600 text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition font-medium">
+                    class="mt-6 w-full md:w-auto bg-primary text-white px-8 py-3 rounded-2xl hover:bg-primary-hover transition font-medium">
                     Aggiungi al carrello
                 </button>
             </form>
 
             <!-- LINK CARRELLO -->
-            <a href="{{ route('cart.index') }}" class="mt-4 text-sm text-gray-500 hover:text-blue-600 transition">
+            <a href="{{ route('cart.index') }}" class="mt-4 text-sm text-gray-500 hover:text-primary transition">
                 Vai al carrello
             </a>
 

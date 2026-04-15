@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Gestione prodotti</h1>
 
-            <a href="{{ route('admin.products.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-xl">
+            <a href="{{ route('admin.products.create') }}" class="bg-primary text-white px-4 py-2 rounded-xl">
                 Nuovo prodotto
             </a>
         </div>
@@ -25,13 +25,14 @@
                     </div>
 
                     <div class="flex gap-3">
-                        <a href="{{ route('admin.products.edit', $product) }}" class="text-blue-600">Modifica</a>
+                        <a href="{{ route('admin.products.edit', $product) }}"
+                            class="text-primary hover:text-primary-hover transition">Modifica</a>
 
                         <form method="POST" action="{{ route('admin.products.destroy', $product) }}">
                             @csrf
                             @method('DELETE')
 
-                            <button class="text-red-600">Elimina</button>
+                            <button class="text-red-600 hover:text-red-700 transition">Elimina</button>
                         </form>
                     </div>
 

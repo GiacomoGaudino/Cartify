@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('hideHero', true)
+
 @section('content')
 
     <h1 class="text-3xl font-bold mb-10">
@@ -51,7 +53,7 @@
 
                             <!-- DETTAGLI -->
                             <a href="{{ route('products.show', $product) }}"
-                                class="text-sm text-gray-500 hover:text-blue-600 transition">
+                                class="text-sm text-gray-500 hover:text-primary transition">
                                 Dettagli
                             </a>
 
@@ -59,7 +61,7 @@
                             <form method="POST" action="{{ route('cart.add', $product->id) }}">
                                 @csrf
                                 <button
-                                    class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm hover:bg-blue-700 transition">
+                                    class="bg-primary text-white px-4 py-2 rounded-xl text-sm hover:bg-primary-hover transition">
                                     Aggiungi
                                 </button>
                             </form>

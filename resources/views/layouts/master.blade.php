@@ -4,41 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Cartify</title>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
     <!-- NAVBAR -->
     <header class="bg-white shadow-sm border-b">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
 
             <!-- LOGO -->
-            <a href="{{ url('/') }}" class="text-2xl font-bold text-blue-600">
+            <a href="{{ url('/') }}" class="text-2xl font-bold text-primary">
                 🛍️ Cartify
             </a>
 
             @php
                 $cart = session('cart', []);
-
-                $cartCount = array_sum(array_map(function ($item) {
-                    return $item['quantity'];
-                }, $cart));
+                $cartCount = array_sum(array_map(fn($item) => $item['quantity'], $cart));
             @endphp
 
-            <!-- MENU -->
             <div class="flex items-center gap-8">
 
-                <!-- MENU SHOP -->
+                <!-- MENU -->
                 <nav class="flex items-center gap-6 text-sm font-medium">
 
-                    <a href="{{ route('products.index') }}" class="text-gray-700 hover:text-blue-600 transition">
+                    <a href="{{ route('products.index') }}" class="text-gray-700 hover:text-primary transition">
                         Prodotti
                     </a>
 
-                    <a href="{{ route('cart.index') }}" class="text-gray-700 hover:text-blue-600 transition relative">
+                    <a href="{{ route('cart.index') }}" class="text-gray-700 hover:text-primary transition relative">
                         Carrello
 
                         @if($cartCount > 0)
@@ -49,7 +44,7 @@
                         @endif
                     </a>
 
-                    <a href="{{ route('checkout.index') }}" class="text-gray-700 hover:text-blue-600 transition">
+                    <a href="{{ route('checkout.index') }}" class="text-gray-700 hover:text-primary transition">
                         Checkout
                     </a>
 
@@ -64,14 +59,15 @@
                     @auth
                         @if(auth()->user()->is_admin)
                             <a href="{{ route('admin.products.index') }}"
-                                class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
+                                class="px-3 py-2 text-gray-600 hover:text-primary transition">
                                 Admin
                             </a>
                         @endif
-                        <a href="{{ route('orders.index') }}"
-                            class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
+
+                        <a href="{{ route('orders.index') }}" class="px-3 py-2 text-gray-600 hover:text-primary transition">
                             I miei ordini
                         </a>
+
                         <span class="text-gray-600 hidden sm:inline">
                             Ciao, {{ Auth::user()->name }}
                         </span>
@@ -79,18 +75,18 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
-                                class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition">
+                                class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 hover:bg-primary hover:text-white transition">
                                 Logout
                             </button>
                         </form>
 
                     @else
-                        <a href="{{ route('login') }}" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
+                        <a href="{{ route('login') }}" class="px-3 py-2 text-gray-600 hover:text-primary transition">
                             Login
                         </a>
 
                         <a href="{{ route('register') }}"
-                            class="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm">
+                            class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition shadow-sm">
                             Register
                         </a>
                     @endauth
@@ -104,21 +100,45 @@
 
     <!-- HERO -->
     @if (!View::hasSection('hideHero'))
-        <section class="bg-blue-600 text-white">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <h1 class="text-4xl font-bold">
-                    Benvenuto su Cartify 🚀
-                </h1>
+        <section class="relative h-[500px] md:h-[600px] rounded-b-3xl overflow-hidden">
 
-                <p class="mt-2 text-blue-100">
-                    Il tuo e-commerce Laravel moderno e minimal.
-                </p>
+            <!-- BACKGROUND -->
+            <div class="absolute inset-0 bg-cover"
+                style="background-image: url('{{ asset('imgs/banner.png') }}'); background-position: center 60%;">
             </div>
+
+            <!-- OVERLAY -->
+            <div class="absolute inset-0 bg-primary/70"></div>
+
+            <!-- CONTENT -->
+            <div class="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center">
+
+                <div class="text-white max-w-xl">
+
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                        Technology that fits your lifestyle
+                    </h1>
+
+                    <p class="mt-4 text-primary-light text-lg">
+                        Discover premium devices designed for work, entertainment, and everyday use.
+                    </p>
+
+                    <div class="mt-6">
+                        <a href="{{ route('products.index') }}"
+                            class="bg-white text-primary px-6 py-3 rounded-2xl font-medium hover:bg-gray-100 transition">
+                            Explore products
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
     @endif
 
-    <!-- FLASH MESSAGES -->
-    <main class="max-w-6xl mx-auto px-4 py-10">
+    <!-- MAIN -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 w-full">
 
         @if(session('success'))
             <div class="mb-6 rounded-2xl bg-green-100 border border-green-200 text-green-800 px-4 py-3">
@@ -137,7 +157,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white border-t mt-20">
+    <footer class="bg-white border-t mt-auto">
         <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-500 text-center">
             © {{ date('Y') }} Cartify, Built with Laravel 💙
         </div>
