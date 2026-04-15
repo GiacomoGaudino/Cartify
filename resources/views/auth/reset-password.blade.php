@@ -28,7 +28,7 @@
 
                     <input id="email" type="email" name="email" value="{{ old('email', $request->email) }}" required
                         autofocus autocomplete="username"
-                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
 
                     @error('email')
                         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
@@ -41,7 +41,7 @@
                     </label>
 
                     <input id="password" type="password" name="password" required autocomplete="new-password"
-                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
 
                     @error('password')
                         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
@@ -55,7 +55,7 @@
 
                     <input id="password_confirmation" type="password" name="password_confirmation" required
                         autocomplete="new-password"
-                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
 
                     @error('password_confirmation')
                         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
@@ -63,7 +63,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-2xl font-medium hover:bg-blue-700 transition">
+                    class="w-full bg-primary text-white py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
                     Reimposta password
                 </button>
             </form>

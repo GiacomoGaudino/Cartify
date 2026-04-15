@@ -33,7 +33,7 @@
 
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
                         autocomplete="username"
-                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
 
                     @error('email')
                         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
@@ -47,7 +47,7 @@
                     </label>
 
                     <input id="password" type="password" name="password" required autocomplete="current-password"
-                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
 
                     @error('password')
                         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
@@ -58,12 +58,13 @@
                 <div class="flex items-center justify-between gap-4">
                     <label for="remember_me" class="inline-flex items-center text-sm text-gray-600">
                         <input id="remember_me" type="checkbox" name="remember"
-                            class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            class="rounded border-gray-300 text-primary focus:ring-primary">
                         <span class="ml-2">Remember me</span>
                     </label>
 
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:text-blue-700 transition">
+                        <a href="{{ route('password.request') }}"
+                            class="text-sm text-primary hover:text-primary-hover transition">
                             Forgot password?
                         </a>
                     @endif
@@ -71,14 +72,14 @@
 
                 <!-- Submit -->
                 <button type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-2xl font-medium hover:bg-blue-700 transition">
+                    class="w-full bg-primary text-white py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
                     Log in
                 </button>
             </form>
 
             <div class="mt-6 text-center text-sm text-gray-500">
                 Non hai ancora un account?
-                <a href="{{ route('register') }}" class="text-blue-600 font-medium hover:text-blue-700 transition">
+                <a href="{{ route('register') }}" class="text-primary font-medium hover:text-primary-hover transition">
                     Registrati
                 </a>
             </div>

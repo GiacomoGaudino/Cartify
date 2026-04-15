@@ -29,7 +29,7 @@
                     @csrf
 
                     <button type="submit"
-                        class="w-full bg-blue-600 text-white py-3 rounded-2xl font-medium hover:bg-blue-700 transition">
+                        class="w-full bg-primary text-white py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
                         Invia di nuovo email di verifica
                     </button>
                 </form>
@@ -38,7 +38,7 @@
                     @csrf
 
                     <button type="submit"
-                        class="w-full border border-gray-200 bg-white text-gray-700 py-3 rounded-2xl font-medium hover:bg-gray-50 hover:text-blue-600 transition">
+                        class="w-full border border-gray-200 bg-white text-gray-700 py-3 rounded-2xl font-medium hover:bg-gray-50 hover:text-primary transition">
                         Logout
                     </button>
                 </form>
