@@ -9,23 +9,23 @@ class CartController extends Controller
 {
     public function add($id)
     {
-        $cart = session()->get('cart', []);
+        $product = Product::findOrFail($id);
+
+        $cart = session('cart', []);
 
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
-            $product = Product::findOrFail($id);
-
             $cart[$id] = [
-                "name" => $product->name,
-                "price" => $product->price,
-                "quantity" => 1
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => 1,
             ];
         }
 
-        session()->put('cart', $cart);
+        session(['cart' => $cart]);
 
-        return redirect()->back();
+        return back()->with('success', 'Prodotto aggiunto');
     }
 
     public function index()

@@ -26,9 +26,9 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-Route::patch('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::patch('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');

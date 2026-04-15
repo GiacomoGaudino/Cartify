@@ -36,9 +36,15 @@
                             € {{ $subtotal }}
                         </p>
 
-                        <a href="/cart/remove/{{ $id }}" class="text-red-500 text-sm hover:underline">
-                            Rimuovi
-                        </a>
+                        <form method="POST" action="{{ route('cart.remove', $id) }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="text-red-500 text-sm hover:underline">
+                                Rimuovi
+                            </button>
+                        </form>
+
 
                     </div>
 
