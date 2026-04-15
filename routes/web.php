@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('homepage');
-});
+})->name('homepage');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,6 +37,10 @@ Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])-
 Route::middleware('auth')->group(function () {
     Route::get('/my-orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/my-orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('admin/products', AdminProductController::class);
 });
 
 require __DIR__ . '/auth.php';

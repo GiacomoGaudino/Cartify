@@ -62,6 +62,10 @@
                 <div class="flex items-center gap-3 text-sm font-medium">
 
                     @auth
+                        <a href="{{ route('orders.index') }}"
+                            class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">
+                            I miei ordini
+                        </a>
                         <span class="text-gray-600 hidden sm:inline">
                             Ciao, {{ Auth::user()->name }}
                         </span>
