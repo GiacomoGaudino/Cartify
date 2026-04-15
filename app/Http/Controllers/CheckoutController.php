@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -15,27 +16,40 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
-        $cart = session('cart', []);
-
-        $total = collect($cart)->sum(function ($item) {
-            return $item['price'] * $item['quantity'];
-        });
-
-        $order = Order::create([
-            'customer_name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'total_price' => $total
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'address' => ['required', 'string', 'max:500'],
         ]);
 
-        foreach ($cart as $id => $item) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $id,
-                'quantity' => $item['quantity'],
-                'price' => $item['price']
-            ]);
+        $cart = session('cart', []);
+
+        if (empty($cart)) {
+            return redirect()->route('cart.index')
+                ->with('error', 'Il carrello è vuoto.');
         }
+
+        DB::transaction(function () use ($validated, $cart) {
+            $total = collect($cart)->sum(function ($item) {
+                return $item['price'] * $item['quantity'];
+            });
+
+            $order = Order::create([
+                'customer_name' => $validated['name'],
+                'email' => $validated['email'],
+                'address' => $validated['address'],
+                'total_price' => $total,
+            ]);
+
+            foreach ($cart as $id => $item) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $id,
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                ]);
+            }
+        });
 
         session()->forget('cart');
 
