@@ -62,7 +62,10 @@
                                 <tr class="hover:bg-gray-50 transition">
 
                                     <td class="px-6 py-4 font-medium text-gray-900">
-                                        #{{ $order->id }}
+                                        <a href="{{ route('admin.orders.show', $order) }}"
+                                            class="font-medium text-gray-900 hover:text-primary transition">
+                                            #{{ $order->id }}
+                                        </a>
                                     </td>
 
                                     <td class="px-6 py-4">
