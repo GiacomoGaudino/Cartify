@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
@@ -48,6 +49,8 @@ Route::middleware(['auth', 'admin'])
 
         Route::resource('products', AdminProductController::class);
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('orders', [AdminOrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
     });
 
 require __DIR__ . '/auth.php';
