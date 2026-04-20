@@ -58,7 +58,7 @@
 
                     @auth
                         @if(auth()->user()->is_admin)
-                            <a href="{{ route('admin.products.index') }}"
+                            <a href="{{ route('admin.dashboard') }}"
                                 class="px-3 py-2 text-gray-600 hover:text-primary transition">
                                 Admin
                             </a>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -45,6 +47,7 @@ Route::middleware(['auth', 'admin'])
     ->group(function () {
 
         Route::resource('products', AdminProductController::class);
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     });
 
 require __DIR__ . '/auth.php';
