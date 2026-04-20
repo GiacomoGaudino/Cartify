@@ -19,11 +19,18 @@
                 </p>
             </div>
 
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
+
                 <a href="{{ route('admin.products.index') }}"
                     class="bg-primary text-white px-5 py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
                     Manage Products
                 </a>
+
+                <a href="{{ route('admin.orders.index') }}"
+                    class="bg-primary border border-gray-200 text-white px-5 py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
+                    Manage Orders
+                </a>
+
             </div>
 
         </div>
@@ -91,10 +98,12 @@
         <!-- RECENT ORDERS -->
         <div class="bg-white rounded-3xl shadow overflow-hidden">
 
-            <div class="p-6 border-b">
+            <div class="p-6 border-b flex items-center justify-between">
+
                 <h2 class="text-xl font-bold text-gray-900">
                     Latest Orders
                 </h2>
+
             </div>
 
             @if($latestOrders->count())
@@ -104,7 +113,6 @@
                     <table class="w-full text-sm">
 
                         <thead class="bg-gray-50 text-gray-500 uppercase tracking-wide">
-
                             <tr>
                                 <th class="text-left px-6 py-4">Order</th>
                                 <th class="text-left px-6 py-4">Customer</th>
@@ -112,7 +120,6 @@
                                 <th class="text-left px-6 py-4">Status</th>
                                 <th class="text-left px-6 py-4">Date</th>
                             </tr>
-
                         </thead>
 
                         <tbody class="divide-y divide-gray-100">
@@ -121,8 +128,11 @@
 
                                 <tr class="hover:bg-gray-50 transition">
 
-                                    <td class="px-6 py-4 font-medium text-gray-900">
-                                        #{{ $order->id }}
+                                    <td class="px-6 py-4 font-medium">
+                                        <a href="{{ route('admin.orders.show', $order) }}"
+                                            class="text-gray-900 hover:text-primary transition">
+                                            #{{ $order->id }}
+                                        </a>
                                     </td>
 
                                     <td class="px-6 py-4 text-gray-700">
@@ -139,14 +149,17 @@
                                             <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
                                                 Pending
                                             </span>
+
                                         @elseif($order->status === 'paid')
                                             <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
                                                 Paid
                                             </span>
+
                                         @elseif($order->status === 'shipped')
                                             <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
                                                 Shipped
                                             </span>
+
                                         @else
                                             <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-medium">
                                                 {{ ucfirst($order->status) }}
