@@ -33,9 +33,7 @@
 
                 <div>
                     <p class="text-sm text-gray-500">Stato</p>
-                    <span class="inline-flex mt-1 rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
-                        {{ ucfirst($order->status) }}
-                    </span>
+                    @include('profile.partials.orderStatus', ['order' => $order])
                 </div>
             </div>
 

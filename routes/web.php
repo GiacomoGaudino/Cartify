@@ -51,6 +51,7 @@ Route::middleware(['auth', 'admin'])
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('orders', [AdminOrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+        Route::patch('orders/{order}/updateStatus', [AdminOrderController::class, 'updateStatus'])->name('orders.update.status');
     });
 
 require __DIR__ . '/auth.php';

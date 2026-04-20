@@ -35,9 +35,7 @@
                         </div>
 
                         <div class="flex items-center gap-3">
-                            <span class="inline-flex rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
-                                {{ ucfirst($order->status) }}
-                            </span>
+                            @include('profile.partials.orderStatus', ['order' => $order])
 
                             <a href="{{ route('orders.show', $order) }}"
                                 class="bg-primary text-white px-4 py-2 rounded-2xl hover:bg-primary-hover transition text-sm font-medium">

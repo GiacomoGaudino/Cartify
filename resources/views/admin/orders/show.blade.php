@@ -28,26 +28,7 @@
 
             <div>
 
-                @if($order->status === 'pending')
-                    <span class="bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-medium">
-                        Pending
-                    </span>
-
-                @elseif($order->status === 'paid')
-                    <span class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium">
-                        Paid
-                    </span>
-
-                @elseif($order->status === 'shipped')
-                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium">
-                        Shipped
-                    </span>
-
-                @else
-                    <span class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-medium">
-                        {{ ucfirst($order->status) }}
-                    </span>
-                @endif
+                @include('profile.partials.orderStatus', ['order' => $order])
 
             </div>
 
@@ -135,6 +116,55 @@
                 </div>
 
             </div>
+
+        </div>
+
+        <!-- UPDATE STATUS -->
+        <div class="bg-white rounded-3xl shadow p-6">
+
+            <h2 class="text-xl font-bold text-gray-900 mb-4">
+                Update Order Status
+            </h2>
+
+            <form method="POST" action="{{ route('admin.orders.update.status', $order) }}">
+                @csrf
+                @method('PATCH')
+
+                <div class="flex flex-col sm:flex-row gap-4">
+
+                    <select name="status"
+                        class="w-full sm:w-auto flex-1 rounded-2xl border border-gray-200 px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+
+                        <option value="pending" {{ $order->status === 'pending' ? 'selected' : '' }}>
+                            Pending
+                        </option>
+
+                        <option value="paid" {{ $order->status === 'paid' ? 'selected' : '' }}>
+                            Paid
+                        </option>
+
+                        <option value="shipped" {{ $order->status === 'shipped' ? 'selected' : '' }}>
+                            Shipped
+                        </option>
+
+                        <option value="completed" {{ $order->status === 'completed' ? 'selected' : '' }}>
+                            Completed
+                        </option>
+
+                        <option value="cancelled" {{ $order->status === 'cancelled' ? 'selected' : '' }}>
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                    <button type="submit"
+                        class="bg-primary text-white px-6 py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
+                        Update Status
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
