@@ -41,32 +41,32 @@
                 <!-- FILTER BUTTONS -->
                 <div class="flex flex-wrap gap-3">
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index') }}"
                         class="px-4 py-2 rounded-2xl bg-primary text-white text-sm font-medium hover:bg-primary-hover transition">
                         All
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index', ['status' => 'pending']) }}"
                         class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
                         Pending
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index', ['status' => 'paid']) }}"
                         class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
                         Paid
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index', ['status' => 'shipped']) }}"
                         class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
                         Shipped
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index', ['status' => 'completed']) }}"
                         class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
                         Completed
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('admin.orders.index', ['status' => 'cancelled']) }}"
                         class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
                         Cancelled
                     </a>
