@@ -31,10 +31,48 @@
         <!-- TABLE -->
         <div class="bg-white rounded-3xl shadow overflow-hidden">
 
-            <div class="p-6 border-b">
+            <!-- TITLE + FILTERS -->
+            <div class="p-6 border-b space-y-4">
+
                 <h2 class="text-xl font-bold text-gray-900">
                     All Orders
                 </h2>
+
+                <!-- FILTER BUTTONS -->
+                <div class="flex flex-wrap gap-3">
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-primary text-white text-sm font-medium hover:bg-primary-hover transition">
+                        All
+                    </a>
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
+                        Pending
+                    </a>
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
+                        Paid
+                    </a>
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
+                        Shipped
+                    </a>
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
+                        Completed
+                    </a>
+
+                    <a href="#"
+                        class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium hover:bg-gray-200 transition">
+                        Cancelled
+                    </a>
+
+                </div>
+
             </div>
 
             @if($orders->count())
@@ -87,9 +125,7 @@
                                     </td>
 
                                     <td class="px-6 py-4">
-
                                         @include('profile.partials.orderStatus', ['order' => $order])
-
                                     </td>
 
                                     <td class="px-6 py-4 text-gray-500">
