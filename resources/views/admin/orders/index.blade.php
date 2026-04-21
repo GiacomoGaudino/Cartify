@@ -42,42 +42,42 @@
                 <div class="flex flex-wrap gap-3">
 
                     <a href="{{ route('admin.orders.index') }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === null
+                                   {{ request('status') === null
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         All
                     </a>
 
                     <a href="{{ route('admin.orders.index', ['status' => 'pending']) }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === 'pending'
+                                   {{ request('status') === 'pending'
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         Pending
                     </a>
 
                     <a href="{{ route('admin.orders.index', ['status' => 'paid']) }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === 'paid'
+                                   {{ request('status') === 'paid'
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         Paid
                     </a>
 
                     <a href="{{ route('admin.orders.index', ['status' => 'shipped']) }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === 'shipped'
+                                   {{ request('status') === 'shipped'
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         Shipped
                     </a>
 
                     <a href="{{ route('admin.orders.index', ['status' => 'completed']) }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === 'completed'
+                                   {{ request('status') === 'completed'
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         Completed
                     </a>
 
                     <a href="{{ route('admin.orders.index', ['status' => 'cancelled']) }}" class="px-4 py-2 rounded-2xl text-sm font-medium transition
-                               {{ request('status') === 'cancelled'
+                                   {{ request('status') === 'cancelled'
         ? 'bg-primary text-white hover:bg-primary-hover'
         : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         Cancelled
@@ -162,7 +162,7 @@
                 </div>
 
                 <div class="p-6 border-t">
-                    {{ $orders->links() }}
+                    {{ $orders->withQueryString()->links() }}
                 </div>
 
             @else
