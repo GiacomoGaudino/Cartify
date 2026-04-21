@@ -11,12 +11,14 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::withCount('items');
+
         if (request()->query('status')) {
-            $orders = Order::withCount('items')->where('status', request()->query('status'))->latest()->paginate(10);
-        } else {
-            $orders = Order::withCount('items')->latest()->paginate(10);
-        }  
-        return view("admin.orders.index", compact('orders'));
+            $orders->where('status', request()->query('status'));
+        }
+
+        $orders = $orders->latest()->paginate(10);
+
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function show(Order $order)
