@@ -10,28 +10,55 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         $faker = $this->faker;
 
         $products = [
-            ["name" => "Smartphone", "min" => 300, "max" => 1200],
-            ["name" => "Laptop", "min" => 700, "max" => 2500],
-            ["name" => "Cuffie Bluetooth", "min" => 50, "max" => 300],
-            ["name" => "Smartwatch", "min" => 100, "max" => 800],
-            ["name" => "Tablet", "min" => 200, "max" => 1500],
+            [
+                "name" => "Smartphone",
+                "min" => 300,
+                "max" => 1200,
+                "image" => "products/smartphone.png"
+            ],
+            [
+                "name" => "Laptop",
+                "min" => 700,
+                "max" => 2500,
+                "image" => "products/laptop.png"
+            ],
+            [
+                "name" => "Cuffie Bluetooth",
+                "min" => 50,
+                "max" => 300,
+                "image" => "products/headphones.png"
+            ],
+            [
+                "name" => "Smartwatch",
+                "min" => 100,
+                "max" => 800,
+                "image" => "products/smartwatch.png"
+            ],
+            [
+                "name" => "Tablet",
+                "min" => 200,
+                "max" => 1500,
+                "image" => "products/tablet.png"
+            ],
         ];
 
         $product = $products[array_rand($products)];
 
         $brand = $faker->company();
 
-        $adjective = $faker->optional()->randomElement(['Pro', 'Max', 'Ultra', 'Lite', 'Plus']);
+        $adjective = $faker->optional()->randomElement([
+            'Pro',
+            'Max',
+            'Ultra',
+            'Lite',
+            'Plus'
+        ]);
+
         $name = trim($brand . ' ' . $product['name'] . ' ' . $adjective);
 
         $price = $faker->numberBetween($product['min'] * 100, $product['max'] * 100) / 100;
@@ -45,10 +72,20 @@ class ProductFactory extends Factory
 
         return [
             'name' => $name,
+
             'description' => $name . ' perfetto per ' .
-                $faker->randomElement(['lavoro', 'gaming', 'tempo libero', 'ufficio']) .
-                '. ' . $faker->randomElement($phrases),
+                $faker->randomElement([
+                    'lavoro',
+                    'gaming',
+                    'tempo libero',
+                    'ufficio'
+                ]) .
+                '. ' .
+                $faker->randomElement($phrases),
+
             'price' => $price,
+
+            'image' => $product['image'],
         ];
     }
 }
