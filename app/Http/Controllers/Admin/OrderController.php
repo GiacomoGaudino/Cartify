@@ -12,15 +12,24 @@ class OrderController extends Controller
     {
         $orders = Order::withCount('items');
 
-        if (request()->query('status')) {
-            $orders->where('status', request()->query('status'));
+        $status = request()->query('status');
+        $search = request()->query('search');
+
+        if ($status) {
+            $orders->where('status', $status);
+        }
+
+        if ($search) {
+            $orders->where(function ($query) use ($search) {
+                $query->where('customer_name', 'like', '%' . $search . '%')
+                    ->orWhere('customer_email', 'like', '%' . $search . '%');
+            });
         }
 
         $orders = $orders->latest()->paginate(10);
 
         return view('admin.orders.index', compact('orders'));
     }
-
     public function show(Order $order)
     {
         $order->load('items.product');
