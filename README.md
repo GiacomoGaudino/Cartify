@@ -65,7 +65,7 @@ Flow:
 ![Checkout](public/screenshots/checkout.png)
 
 ### Payment Success
-![Payment Success](public/screenshots/success.png)
+![Payment Success](public/screenshots/payment_success.png)
 
 ### Admin Dashboard
 ![Admin Dashboard](public/screenshots/admin_dashboard.png)
