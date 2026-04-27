@@ -1,42 +1,94 @@
 # Cartify
 
-Cartify is a Laravel-based e-commerce web application.
+Cartify is a full stack e-commerce web application built with Laravel, designed to simulate a real-world online shopping experience.
 
-## Overview
+---
 
-This project includes the core features of a modern e-commerce system:
+## 🚀 Overview
 
-- Product catalog
-- Product detail page
-- Session-based cart
-- Checkout flow
-- Order creation with order items
+Cartify provides a complete purchase flow, from product browsing to payment processing.
 
-The goal of this project is to build a complete and functional shopping experience, focusing on backend logic and clean structure.
+The project focuses on backend architecture, data consistency, and integration with external services like Stripe.
 
-## Tech Stack
+---
 
-- Laravel (PHP)
-- Blade
-- Tailwind CSS
-- MySQL
+## ✨ Features
 
-## Current Features
+- Product catalog with detailed product pages  
+- Session-based shopping cart  
+- Dynamic cart management (add, update, remove items)  
+- Checkout flow with form validation  
+- Order creation with related order items  
+- Stripe payment integration (test mode)  
+- Order status management (pending → paid)  
+- Admin dashboard for order monitoring  
+- Order filtering (status, customer name, email)  
+- Order success page with full summary  
 
-- Browse products
-- View product details
-- Add/remove items from cart
-- Update cart quantities
-- Complete checkout
-- Orders stored in database with order items
+---
 
-## Status
+## 🛠 Tech Stack
 
-This project is currently in development.
+- **Backend:** Laravel (PHP)  
+- **Frontend:** Blade, Tailwind CSS  
+- **Database:** MySQL  
+- **Payments:** Stripe API  
 
-Next steps include:
+---
 
-- Order history
-- Admin panel
-- Product management
-- UI improvements
+## 💳 Payment Integration
+
+Payments are handled through Stripe in test mode.
+
+Flow:
+1. User submits checkout form  
+2. Order is created with status `pending`  
+3. User is redirected to Stripe Checkout  
+4. On successful payment, order is updated to `paid`  
+
+---
+
+## 📸 Screenshots
+
+*(Add screenshots here)*
+
+- Homepage  
+- Product page  
+- Cart  
+- Checkout  
+- Payment success  
+- Admin dashboard  
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/GiacomoGaudino/Cartify
+cd Cartify
+composer install
+cp .env.example .env
+php artisan key:generate
+
+Configure your database in .env, then run:
+
+php artisan migrate --seed
+php artisan serve
+🔐 Environment Variables
+STRIPE_KEY=your_public_key
+STRIPE_SECRET=your_secret_key
+📌 Notes
+
+This project uses client-side payment confirmation.
+In production environments, Stripe webhooks should be implemented for secure payment validation.
+
+📈 Future Improvements
+Stripe webhook integration
+Order history improvements
+User authentication enhancements
+UI/UX refinements
+Product image management improvements
+
+👨‍💻 Author
+
+Giacomo Gaudino
