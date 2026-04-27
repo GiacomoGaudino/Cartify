@@ -92,6 +92,10 @@ class CheckoutController extends Controller
 
     public function success(Order $order)
     {
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $order->load('items.product');
 
         // Evita doppio update
